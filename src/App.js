@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./index.css";
+import { useState, useEffect } from "react";
+import Header from './components/Header'
+import Product from './components/Product';
 
-function App() {
+export default function App() {
+  const [data, setData] = useState(null);
+  const controllerData = {
+    system: "PS5",
+    item: "Dualshock 5",
+    description: "Controle para Playstation 5",
+    price: "R$399.00",
+    img: "./imgs/controller.webp"
+  };
+
+  useEffect(() => {
+    setData(controllerData);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Product data={data} />
     </div>
   );
 }
-
-export default App;
